@@ -24,5 +24,16 @@ namespace wtfwpf
 		{
 			InitializeComponent();
 		}
+
+		public void SetCount(int count)
+		{
+			txtCount.Text = $"Mérések száma: {count}";
+		}
+
+		public void SetSaved(bool saved)
+		{
+			txtStatus.Text = saved ? "Mentve" : "Nincs mentve";
+			txtStatus.Foreground = saved ? Brushes.Green : Brushes.Red;
+		}
 	}
 }

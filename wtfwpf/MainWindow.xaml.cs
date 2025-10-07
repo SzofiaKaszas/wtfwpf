@@ -23,6 +23,7 @@ namespace wtfwpf
 		public MainWindow()
 		{
 			InitializeComponent();
+			UpdateStatusBar();
 		}
 
 		private void RefreshList()
@@ -34,6 +35,7 @@ namespace wtfwpf
 			{
 				listBox.Items.Add(m.ToString());
 			}
+			UpdateStatusBar();
 		}
 
 		private void btnAdd_Click(object sender, RoutedEventArgs e)
@@ -77,6 +79,8 @@ namespace wtfwpf
 					MessageBox.Show("Sikeres mentés!");
 				}
 			}
+
+			UpdateStatusBar();
 		}
 
 		private void Betoltes_Click(object sender, RoutedEventArgs e)
@@ -158,6 +162,12 @@ namespace wtfwpf
 
 			DiagramWindow diagramWindow = new DiagramWindow(sorted, total);
 			diagramWindow.ShowDialog();
+		}
+
+		private void UpdateStatusBar()
+		{
+			statusBar.SetCount(measurements.Count);
+			statusBar.SetSaved(false);
 		}
 	}
 }

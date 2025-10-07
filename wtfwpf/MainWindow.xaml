@@ -12,6 +12,7 @@
 			<RowDefinition Height="Auto"/>
 			<RowDefinition Height="*"/>
 			<RowDefinition Height="Auto"/>
+			<RowDefinition Height="Auto"/>
 		</Grid.RowDefinitions>
 		
 		<!--Menü-->
@@ -38,5 +39,8 @@
 			<Button x:Name="btnDelete" Content="Törlés" Width="80" Margin="0,0,10,0" Click="btnDelete_Click"/>
 			<Button x:Name="btnDiagram" Content="Diagram" Width="80" Margin="0,0,10,0" Click="btnDiagram_Click"/>
 		</StackPanel>
+		
+		<!--User control beillesztése-->
+		<local:StatusBar x:Name="statusBar" Grid.Row="4" Height="30" Margin="0,10,0,0"/>
 	</Grid>
 </Window>
