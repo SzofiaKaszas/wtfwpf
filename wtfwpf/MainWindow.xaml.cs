@@ -114,7 +114,13 @@ namespace wtfwpf
 				MessageBox.Show("Nincs kiválasztva mérés!");
 				return;
 			}
-			
+
+			var sorted = measurements.OrderBy(m => m.Time).ToList();
+			var selected = sorted[listBox.SelectedIndex];
+
+			measurements.Remove(selected);
+
+			/*
 			foreach (var m in measurements)
 			{
 				if(m.ToString() == listBox.SelectedItem.ToString())
@@ -122,14 +128,15 @@ namespace wtfwpf
 					measurements.Remove(m);
 					break;
 				}
-			}
-			
+			}*/
+
 			RefreshList();
 		}
 
 		private void btnDiagram_Click(object sender, RoutedEventArgs e)
 		{
-
+			DiagramWindow diagramWindow = new DiagramWindow();
+			diagramWindow.ShowDialog();
 		}
 	}
 }
