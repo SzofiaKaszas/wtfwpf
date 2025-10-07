@@ -35,8 +35,8 @@
 		<ListBox x:Name="listBox" Grid.Row="2" Margin="0,0,0,10" FontSize="13"/>
 
 		<StackPanel Grid.Row="3" Orientation="Horizontal" HorizontalAlignment="Stretch">
-			<Button x:Name="btnDelete" Content="Törlés" Width="80" Margin="0,0,10,0"/>
-			<Button x:Name="btnDiagram" Content="Diagram" Width="80" Margin="0,0,10,0"/>
+			<Button x:Name="btnDelete" Content="Törlés" Width="80" Margin="0,0,10,0" Click="btnDelete_Click"/>
+			<Button x:Name="btnDiagram" Content="Diagram" Width="80" Margin="0,0,10,0" Click="btnDiagram_Click"/>
 		</StackPanel>
 	</Grid>
 </Window>

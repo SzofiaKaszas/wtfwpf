@@ -106,5 +106,30 @@ namespace wtfwpf
 		{
 			Close();
 		}
+
+		private void btnDelete_Click(object sender, RoutedEventArgs e)
+		{
+			if(listBox.SelectedIndex == -1)
+			{
+				MessageBox.Show("Nincs kiválasztva mérés!");
+				return;
+			}
+			
+			foreach (var m in measurements)
+			{
+				if(m.ToString() == listBox.SelectedItem.ToString())
+				{
+					measurements.Remove(m);
+					break;
+				}
+			}
+			
+			RefreshList();
+		}
+
+		private void btnDiagram_Click(object sender, RoutedEventArgs e)
+		{
+
+		}
 	}
 }
