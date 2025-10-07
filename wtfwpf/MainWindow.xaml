@@ -5,8 +5,38 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:wtfwpf"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
-    <Grid>
+        Title="MainWindow" Height="400" Width="450">
+    <Grid Margin="10">
+		<Grid.RowDefinitions>
+			<RowDefinition Height="Auto"/>
+			<RowDefinition Height="Auto"/>
+			<RowDefinition Height="*"/>
+			<RowDefinition Height="Auto"/>
+		</Grid.RowDefinitions>
+		
+		<!--Menü-->
+		<Menu Grid.Row="0">
+			<MenuItem Header="Fájl">
+				<MenuItem Header="Mentés"/>
+				<MenuItem Header="Betöltés"/>
+				<Separator/>
+				<MenuItem Header="Kilépés"/>
+			</MenuItem>
+		</Menu>
 
-    </Grid>
+		<StackPanel Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,20,0,10">
+			<Label Content="Idő(s):" VerticalAlignment="Center"/>
+			<TextBox x:Name="txtTime" Width="80" Margin="5,0"/>
+			<Label Content="Sebesség(m/s):" VerticalAlignment="Center"/>
+			<TextBox x:Name="txtSpeed" Width="80" Margin="5,0"/>
+			<Button x:Name="btnAdd" Content="Hozzáadás" Width="70" Margin="10,0"/>
+		</StackPanel>
+
+		<ListBox x:Name="listBox" Grid.Row="2" Margin="0,0,0,10" FontSize="13"/>
+
+		<StackPanel Grid.Row="3" Orientation="Horizontal" HorizontalAlignment="Stretch">
+			<Button x:Name="btnDelete" Content="Törlés" Width="80" Margin="0,0,10,0"/>
+			<Button x:Name="btnDiagram" Content="Diagram" Width="80" Margin="0,0,10,0"/>
+		</StackPanel>
+	</Grid>
 </Window>
