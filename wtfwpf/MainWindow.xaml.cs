@@ -81,7 +81,25 @@ namespace wtfwpf
 
 		private void Betoltes_Click(object sender, RoutedEventArgs e)
 		{
+			OpenFileDialog openFileDialog = new OpenFileDialog();
+			openFileDialog.Filter = "Szövegfájl (*.txt)|*.txt";
+			if(openFileDialog.ShowDialog() == true)
+			{
+				measurements.Clear();
 
+				var lines = File.ReadAllLines(openFileDialog.FileName, Encoding.UTF8);
+				foreach (var line in lines)
+				{
+					var parts = line.Split(';');
+					if(parts.Length == 2 && double.TryParse(parts[0], out double t) && double.TryParse(parts[1], out double s))
+					{
+						measurements.Add(new Measurement(t, s));
+					}
+				}
+
+				RefreshList();
+				MessageBox.Show("Sikeres betöltés!");
+			}
 		}
 
 		private void Kilepes_Click(object sender, RoutedEventArgs e)
