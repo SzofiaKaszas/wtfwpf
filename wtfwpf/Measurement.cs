@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace wtfwpf
 {
-	internal class Measurement
+	public class Measurement
 	{
 		public double Time { get; set; }
 		public double Speed { get; set; }

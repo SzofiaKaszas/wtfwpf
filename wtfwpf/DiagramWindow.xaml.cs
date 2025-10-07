@@ -19,9 +19,15 @@ namespace wtfwpf
 	/// </summary>
 	public partial class DiagramWindow : Window
 	{
-		public DiagramWindow()
+		private List<Measurement> data;
+		private double totalDistance;
+		public DiagramWindow(List<Measurement> data, double totalDistance)
 		{
 			InitializeComponent();
+			this.data = data;
+			this.totalDistance = totalDistance;
+
+
 		}
 	}
 }

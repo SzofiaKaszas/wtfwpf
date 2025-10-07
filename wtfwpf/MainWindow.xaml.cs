@@ -39,7 +39,7 @@ namespace wtfwpf
 		private void btnAdd_Click(object sender, RoutedEventArgs e)
 		{
 			//ellenőrzések
-			if(!double.TryParse(txtTime.Text, out double t) || !double.TryParse(txtSpeed.Text, out double s) || t < 0 || s < 0)
+			if (!double.TryParse(txtTime.Text, out double t) || !double.TryParse(txtSpeed.Text, out double s) || t < 0 || s < 0)
 			{
 				MessageBox.Show("Hibás adat bevitel!");
 				return;
@@ -66,7 +66,7 @@ namespace wtfwpf
 			SaveFileDialog saveFileDialog = new SaveFileDialog();
 			saveFileDialog.Filter = "Szövegfájl (*.txt)|*.txt";
 
-			if(saveFileDialog.ShowDialog() == true)
+			if (saveFileDialog.ShowDialog() == true)
 			{
 				using (StreamWriter sw = new StreamWriter(saveFileDialog.FileName))
 				{
@@ -83,7 +83,7 @@ namespace wtfwpf
 		{
 			OpenFileDialog openFileDialog = new OpenFileDialog();
 			openFileDialog.Filter = "Szövegfájl (*.txt)|*.txt";
-			if(openFileDialog.ShowDialog() == true)
+			if (openFileDialog.ShowDialog() == true)
 			{
 				measurements.Clear();
 
@@ -91,7 +91,7 @@ namespace wtfwpf
 				foreach (var line in lines)
 				{
 					var parts = line.Split(';');
-					if(parts.Length == 2 && double.TryParse(parts[0], out double t) && double.TryParse(parts[1], out double s))
+					if (parts.Length == 2 && double.TryParse(parts[0], out double t) && double.TryParse(parts[1], out double s))
 					{
 						measurements.Add(new Measurement(t, s));
 					}
@@ -109,7 +109,7 @@ namespace wtfwpf
 
 		private void btnDelete_Click(object sender, RoutedEventArgs e)
 		{
-			if(listBox.SelectedIndex == -1)
+			if (listBox.SelectedIndex == -1)
 			{
 				MessageBox.Show("Nincs kiválasztva mérés!");
 				return;
@@ -135,7 +135,28 @@ namespace wtfwpf
 
 		private void btnDiagram_Click(object sender, RoutedEventArgs e)
 		{
-			DiagramWindow diagramWindow = new DiagramWindow();
+			if (measurements.Count < 2)
+			{
+				MessageBox.Show("Nincs elég mérés a diagramhoz!");
+				return;
+			}
+
+			//össztáv számítása (trapéz módszer)
+			var sorted = measurements.OrderBy(m => m.Time).ToList();
+			double total = 0;
+			for (int i = 0; i < sorted.Count - 1; i++)
+			{
+				//idő különbség
+				double dt = sorted[i + 1].Time - sorted[i].Time;
+
+				//átlagsebesség
+				double avg = (sorted[i + 1].Speed + sorted[i].Speed) / 2;
+
+				//részterület hozzáadása
+				total += dt * avg;
+			}
+
+			DiagramWindow diagramWindow = new DiagramWindow(sorted, total);
 			diagramWindow.ShowDialog();
 		}
 	}
