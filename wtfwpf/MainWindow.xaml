@@ -29,7 +29,7 @@
 			<TextBox x:Name="txtTime" Width="80" Margin="5,0"/>
 			<Label Content="Sebesség(m/s):" VerticalAlignment="Center"/>
 			<TextBox x:Name="txtSpeed" Width="80" Margin="5,0"/>
-			<Button x:Name="btnAdd" Content="Hozzáadás" Width="70" Margin="10,0"/>
+			<Button x:Name="btnAdd" Content="Hozzáadás" Width="70" Margin="10,0" Click="btnAdd_Click"/>
 		</StackPanel>
 
 		<ListBox x:Name="listBox" Grid.Row="2" Margin="0,0,0,10" FontSize="13"/>
