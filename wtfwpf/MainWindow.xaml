@@ -17,10 +17,10 @@
 		<!--Menü-->
 		<Menu Grid.Row="0">
 			<MenuItem Header="Fájl">
-				<MenuItem Header="Mentés"/>
-				<MenuItem Header="Betöltés"/>
+				<MenuItem Header="Mentés" Click="Mentes_Click"/>
+				<MenuItem Header="Betöltés" Click="Betoltes_Click"/>
 				<Separator/>
-				<MenuItem Header="Kilépés"/>
+				<MenuItem Header="Kilépés" Click="Kilepes_Click" />
 			</MenuItem>
 		</Menu>
 

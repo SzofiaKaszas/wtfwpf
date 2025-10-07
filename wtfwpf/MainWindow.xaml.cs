@@ -1,4 +1,6 @@
-﻿using System.Text;
+﻿using Microsoft.Win32;
+using System.IO;
+using System.Text;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
@@ -57,6 +59,34 @@ namespace wtfwpf
 			//mezők ürítésa
 			txtTime.Clear();
 			txtSpeed.Clear();
+		}
+
+		private void Mentes_Click(object sender, RoutedEventArgs e)
+		{
+			SaveFileDialog saveFileDialog = new SaveFileDialog();
+			saveFileDialog.Filter = "Szövegfájl (*.txt)|*.txt";
+
+			if(saveFileDialog.ShowDialog() == true)
+			{
+				using (StreamWriter sw = new StreamWriter(saveFileDialog.FileName))
+				{
+					foreach (var m in measurements)
+					{
+						sw.WriteLine(m.toFileString());
+					}
+					MessageBox.Show("Sikeres mentés!");
+				}
+			}
+		}
+
+		private void Betoltes_Click(object sender, RoutedEventArgs e)
+		{
+
+		}
+
+		private void Kilepes_Click(object sender, RoutedEventArgs e)
+		{
+			Close();
 		}
 	}
 }
